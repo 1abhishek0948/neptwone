@@ -998,7 +998,6 @@ h3 {
   }
 }
 .menu-shell {
-  padding-top: 40px;
   border-top: 1px solid var(--line);
 }
 .menu-topline {
@@ -1103,6 +1102,9 @@ h3 {
   font-size: 20px;
   font-weight: 500;
   white-space: nowrap;
+}
+.menu-row-thumb {
+  display: none;
 }
 .menu-pdf {
   display: inline-flex;
@@ -1657,10 +1659,14 @@ html[data-theme="light"] .hero-status.is-closed {
     margin-top: 16px;
   }
   .menu-layout {
-    grid-template-columns: 155px minmax(0, 1fr);
+    grid-template-columns: 155px minmax(0, 1fr) clamp(140px, 18vw, 190px);
   }
   .menu-preview {
-    display: none;
+    display: block;
+    position: sticky;
+    top: 92px;
+    align-self: start;
+    height: 220px;
   }
   .actualites-heading {
     display: block;
@@ -1784,9 +1790,6 @@ html[data-theme="light"] .hero-status.is-closed {
   .daily-special {
     padding-bottom: 38px;
   }
-  .menu-shell {
-    padding-top: 25px;
-  }
   .menu-topline {
     display: block;
     padding-bottom: 20px;
@@ -1798,21 +1801,21 @@ html[data-theme="light"] .hero-status.is-closed {
   .menu-layout {
     display: block;
   }
+  .menu-preview {
+    display: none;
+  }
   .menu-tabs {
     display: flex;
-    overflow-x: auto;
+    flex-wrap: wrap;
     flex-direction: row;
-    gap: 24px;
+    gap: 4px 22px;
     border-bottom: 1px solid var(--line);
-    scrollbar-width: none;
-  }
-  .menu-tabs::-webkit-scrollbar {
-    display: none;
   }
   .menu-tab {
     flex: 0 0 auto;
+    width: auto;
     min-width: 0;
-    padding: 26px 0 14px;
+    padding: 18px 0 12px;
     border-bottom: 0;
     white-space: nowrap;
   }
@@ -1824,9 +1827,19 @@ html[data-theme="light"] .hero-status.is-closed {
     min-height: 0;
   }
   .menu-row {
-    grid-template-columns: 22px minmax(0, 1fr);
+    grid-template-columns: 22px minmax(0, 1fr) 46px;
+    grid-template-areas:
+      "index content thumb"
+      "index price thumb";
     gap: 10px;
     padding-block: 20px;
+  }
+  .menu-row > span {
+    grid-area: index;
+  }
+  .menu-row > div {
+    grid-area: content;
+    min-width: 0;
   }
   .menu-row:hover {
     padding-inline: 0;
@@ -1839,9 +1852,19 @@ html[data-theme="light"] .hero-status.is-closed {
     max-width: 250px;
   }
   .menu-row strong {
-    grid-column: 2;
+    grid-area: price;
     padding: 0;
     font-size: 19px;
+  }
+  .menu-row-thumb {
+    display: block;
+    grid-area: thumb;
+    align-self: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    object-fit: cover;
   }
   .menu-library {
     flex-wrap: wrap;

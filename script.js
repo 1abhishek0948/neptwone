@@ -52,7 +52,7 @@
       heroHoursWeekDinner: "18h00 – 23h00",
       heroHoursWeekendTitle: "Samedi – Dimanche",
       heroHoursWeekendLunch: "12h00 – 15h00",
-      heroHoursWeekendDinner: "18h00 – 00h00",
+      heroHoursWeekendDinner: "18h00 – 23h00",
       heroOrderTitle: "Prise de commande",
       heroOrderLunch: "Déjeuner : 12h00 – 13h30",
       heroOrderDinner: "Dîner : 18h00 – 21h30",
@@ -144,7 +144,7 @@
       heroHoursWeekDinner: "6:00 PM – 11:00 PM",
       heroHoursWeekendTitle: "Saturday – Sunday",
       heroHoursWeekendLunch: "12:00 PM – 3:00 PM",
-      heroHoursWeekendDinner: "6:00 PM – 12:00 AM",
+      heroHoursWeekendDinner: "6:00 PM – 11:00 PM",
       heroOrderTitle: "Order Taking",
       heroOrderLunch: "Lunch: 12:00 PM – 1:30 PM",
       heroOrderDinner: "Dinner: 6:00 PM – 9:30 PM",
@@ -385,6 +385,17 @@
     });
   });
   selectors(".menu-row").forEach((row) => {
+    const source = menuImages[row.dataset.menuImage];
+    if (source && !row.querySelector(".menu-row-thumb")) {
+      const thumbnail = document.createElement("img");
+      thumbnail.className = "menu-row-thumb";
+      thumbnail.src = source;
+      thumbnail.alt = "";
+      thumbnail.loading = "lazy";
+      thumbnail.decoding = "async";
+      thumbnail.setAttribute("aria-hidden", "true");
+      row.appendChild(thumbnail);
+    }
     row.addEventListener("mouseenter", () => {
       if (!preview || !menuImages[row.dataset.menuImage]) return;
       preview.style.opacity = "0";
