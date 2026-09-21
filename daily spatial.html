@@ -1,0 +1,910 @@
+
+<style>
+
+:root {
+    --black: #080807;
+    --panel: #11110f;
+    --cream: #f3ecdf;
+    --muted: #9d988d;
+    --gold: #b99a63;
+    --gold-light: #d3b77f;
+    --line: rgba(205, 175, 112, .25);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(185,154,99,.12),
+            transparent 40%
+        ),
+        var(--black);
+
+    color: var(--cream);
+    font-family: "Inter", sans-serif;
+
+    padding: 40px 24px;
+}
+
+
+/* =================================
+   MAIN MENU
+================================= */
+
+.menu {
+    width: min(1400px, 100%);
+    margin: auto;
+
+    position: relative;
+
+    padding: clamp(45px, 6vw, 80px);
+
+    background: var(--panel);
+
+    border: 1px solid var(--line);
+}
+
+
+/* Inner luxury frame */
+
+.menu::before {
+    content: "";
+
+    position: absolute;
+    inset: 12px;
+
+    border: 1px solid rgba(205,175,112,.13);
+
+    pointer-events: none;
+}
+
+
+/* =================================
+   HEADER
+================================= */
+
+.header {
+    text-align: center;
+
+    position: relative;
+
+    margin-bottom: 55px;
+}
+
+.ornament {
+    color: var(--gold);
+
+    font-size: 12px;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 15px;
+}
+
+.brand {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(55px, 6vw, 82px);
+
+    line-height: .8;
+
+    font-weight: 500;
+
+    letter-spacing: 4px;
+}
+
+.type {
+    margin-top: 18px;
+
+    font-size: 10px;
+
+    letter-spacing: 6px;
+
+    text-transform: uppercase;
+
+    color: var(--gold-light);
+}
+
+.location {
+    margin-top: 13px;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    color: var(--muted);
+}
+
+
+/* =================================
+   TITLE
+================================= */
+
+.title {
+    text-align: center;
+
+    margin-bottom: 45px;
+}
+
+.eyebrow {
+    color: var(--gold);
+
+    text-transform: uppercase;
+
+    letter-spacing: 4px;
+
+    font-size: 9px;
+
+    margin-bottom: 12px;
+}
+
+.title h2 {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(40px, 5vw, 62px);
+
+    font-weight: 500;
+
+    line-height: 1;
+}
+
+.date {
+    margin-top: 13px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =================================
+   PRICE
+================================= */
+
+.price {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 18px;
+
+    margin-bottom: 50px;
+}
+
+.price::before,
+.price::after {
+    content: "";
+
+    width: 100px;
+
+    height: 1px;
+
+    background: var(--line);
+}
+
+.price-label {
+    text-transform: uppercase;
+
+    letter-spacing: 3px;
+
+    font-size: 9px;
+
+    color: var(--gold);
+}
+
+.price-value {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 29px;
+
+    color: var(--cream);
+}
+
+
+/* =================================
+   DESKTOP HORIZONTAL DAYS
+================================= */
+
+.days {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, minmax(0, 1fr));
+
+    border-top: 1px solid var(--line);
+
+    border-bottom: 1px solid var(--line);
+}
+
+
+/* Each day */
+
+.day {
+    min-height: 290px;
+
+    padding: 30px 24px;
+
+    position: relative;
+}
+
+
+/* Vertical separators */
+
+.day:not(:last-child)::after {
+    content: "";
+
+    position: absolute;
+
+    right: 0;
+
+    top: 25px;
+
+    bottom: 25px;
+
+    width: 1px;
+
+    background: var(--line);
+}
+
+
+/* Day heading */
+
+.day-name {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 28px;
+
+    font-weight: 600;
+
+    color: var(--gold-light);
+
+    margin-bottom: 25px;
+
+    padding-bottom: 13px;
+
+    position: relative;
+}
+
+.day-name::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: 0;
+
+    width: 28px;
+
+    height: 1px;
+
+    background: var(--gold);
+}
+
+
+/* =================================
+   DISH
+================================= */
+
+.dish {
+
+    margin-bottom: 22px;
+}
+
+.dish:last-child {
+    margin-bottom: 0;
+}
+
+.dish-name {
+
+    display: block;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 20px;
+
+    line-height: 1.15;
+
+    color: var(--cream);
+}
+
+.allergens {
+
+    display: block;
+
+    margin-top: 6px;
+
+    color: var(--gold);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =================================
+   DAY OFF
+================================= */
+
+.day-off {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 20px;
+
+    font-style: italic;
+
+    color: var(--muted);
+}
+
+
+/* =================================
+   FOOTER
+================================= */
+
+.footer {
+
+    text-align: center;
+
+    margin-top: 45px;
+}
+
+.footer-line {
+
+    width: 100%;
+
+    height: 1px;
+
+    background: var(--line);
+
+    margin-bottom: 25px;
+}
+
+.phone {
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    color: var(--gold-light);
+}
+
+.allergen-title {
+
+    margin-top: 28px;
+
+    color: var(--gold);
+
+    text-transform: uppercase;
+
+    letter-spacing: 3px;
+
+    font-size: 9px;
+}
+
+.allergens-list {
+
+    max-width: 950px;
+
+    margin: 12px auto 0;
+
+    color: var(--muted);
+
+    font-size: 8px;
+
+    line-height: 1.9;
+}
+
+.bottom {
+
+    margin-top: 28px;
+
+    color: var(--gold);
+
+    letter-spacing: 6px;
+
+    font-size: 12px;
+}
+
+
+/* =================================
+   TABLET
+================================= */
+
+@media (max-width: 1000px) {
+
+    body {
+        padding: 25px 16px;
+    }
+
+    .menu {
+        padding: 55px 35px;
+    }
+
+    .days {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .day:not(:last-child)::after {
+        display: none;
+    }
+
+    .day {
+        border-bottom: 1px solid var(--line);
+    }
+
+    .day:nth-child(odd) {
+        border-right: 1px solid var(--line);
+    }
+
+    .day:last-child {
+        grid-column: 1 / -1;
+        border-right: none;
+    }
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 10px;
+    }
+
+    .menu {
+        padding: 48px 20px;
+    }
+
+    .menu::before {
+        inset: 7px;
+    }
+
+
+    /* Header */
+
+    .header {
+        margin-bottom: 40px;
+    }
+
+    .brand {
+        font-size: 54px;
+        letter-spacing: 2px;
+    }
+
+    .type {
+        font-size: 8px;
+        letter-spacing: 3px;
+    }
+
+    .location {
+        font-size: 9px;
+        letter-spacing: 1px;
+    }
+
+
+    /* Title */
+
+    .title {
+        margin-bottom: 32px;
+    }
+
+    .title h2 {
+        font-size: 40px;
+    }
+
+    .date {
+        font-size: 10px;
+    }
+
+
+    /* Price */
+
+    .price {
+        gap: 10px;
+
+        margin-bottom: 35px;
+    }
+
+    .price::before,
+    .price::after {
+        width: 35px;
+    }
+
+
+    /* Vertical mobile layout */
+
+    .days {
+
+        display: flex;
+
+        flex-direction: column;
+
+        border-top: 1px solid var(--line);
+
+        border-bottom: none;
+    }
+
+    .day {
+
+        min-height: auto;
+
+        padding: 28px 20px;
+
+        border-bottom: 1px solid var(--line) !important;
+
+        border-right: none !important;
+    }
+
+    .day:last-child {
+        border-bottom: none !important;
+    }
+
+    .day:not(:last-child)::after {
+        display: none;
+    }
+
+
+    /* Day title */
+
+    .day-name {
+        font-size: 27px;
+
+        margin-bottom: 20px;
+    }
+
+
+    /* Dishes */
+
+    .dish {
+        margin-bottom: 18px;
+    }
+
+    .dish-name {
+        font-size: 20px;
+    }
+
+
+    /* Footer */
+
+    .allergens-list {
+        font-size: 7px;
+        line-height: 2;
+    }
+}
+
+
+/* =================================
+   VERY SMALL MOBILE
+================================= */
+
+@media (max-width: 380px) {
+
+    .menu {
+        padding: 42px 17px;
+    }
+
+    .brand {
+        font-size: 48px;
+    }
+
+    .title h2 {
+        font-size: 35px;
+    }
+
+    .day {
+        padding: 25px 17px;
+    }
+
+    .dish-name {
+        font-size: 18px;
+    }
+}
+
+
+/* =================================
+   PRINT
+================================= */
+
+@media print {
+
+    body {
+        background: white;
+        padding: 0;
+    }
+
+    .menu {
+        width: 100%;
+        background: white;
+        color: black;
+    }
+
+    .brand,
+    .title h2,
+    .dish-name {
+        color: #111;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+<main class="menu">
+
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <div class="ornament">✦</div>
+
+        <h1 class="brand">
+            Neptwne
+        </h1>
+
+        <div class="type">
+            Restaurant-Pizzeria
+        </div>
+
+        <div class="location">
+            Colmar-Berg&nbsp;&nbsp;•&nbsp;&nbsp;Tél. 26 88 73 40
+        </div>
+
+    </header>
+
+
+    <!-- TITLE -->
+
+    <section class="title">
+
+        <div class="eyebrow">
+            Weekly Selection
+        </div>
+
+        <h2>
+            Daily Specials
+        </h2>
+
+        <div class="date">
+            September 14 — 18, 2026
+        </div>
+
+    </section>
+
+
+    <!-- PRICE -->
+
+    <div class="price">
+
+        <span class="price-label">
+            Menu
+        </span>
+
+        <span class="price-value">
+            €15.50
+        </span>
+
+    </div>
+
+
+    <!-- HORIZONTAL DESKTOP / VERTICAL MOBILE -->
+
+    <section class="days">
+
+
+        <!-- MONDAY -->
+
+        <article class="day">
+
+            <h3 class="day-name">
+                Monday
+            </h3>
+
+            <div class="dish">
+
+                <span class="dish-name">
+                    Cream of Vegetable Soup
+                </span>
+
+                <span class="allergens">
+                    A · I · G
+                </span>
+
+            </div>
+
+            <div class="dish">
+
+                <span class="dish-name">
+                    Pasta Duo
+                </span>
+
+                <span class="allergens">
+                    A · C · G
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- TUESDAY -->
+
+        <article class="day">
+
+            <h3 class="day-name">
+                Tuesday
+            </h3>
+
+            <p class="day-off">
+                Day off
+            </p>
+
+        </article>
+
+
+        <!-- WEDNESDAY -->
+
+        <article class="day">
+
+            <h3 class="day-name">
+                Wednesday
+            </h3>
+
+            <div class="dish">
+
+                <span class="dish-name">
+                    Breaded Pork Escalope, Fries
+                </span>
+
+                <span class="allergens">
+                    A · C · G
+                </span>
+
+            </div>
+
+            <div class="dish">
+
+                <span class="dish-name">
+                    Poire Belle-Hélène
+                </span>
+
+                <span class="allergens">
+                    C · G
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- THURSDAY -->
+
+        <article class="day">
+
+            <h3 class="day-name">
+                Thursday
+            </h3>
+
+            <div class="dish">
+
+                <span class="dish-name">
+                    Farmer's Soup
+                </span>
+
+                <span class="allergens">
+                    I
+                </span>
+
+            </div>
+
+            <div class="dish">
+
+                <span class="dish-name">
+                    Alsatian Salad
+                </span>
+
+                <span class="allergens">
+                    A · G · C · J
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- FRIDAY -->
+
+        <article class="day">
+
+            <h3 class="day-name">
+                Friday
+            </h3>
+
+            <div class="dish">
+
+                <span class="dish-name">
+                    Vol-au-Vent, Pilaf Rice
+                </span>
+
+                <span class="allergens">
+                    A · C · G
+                </span>
+
+            </div>
+
+            <div class="dish">
+
+                <span class="dish-name">
+                    Apple Tart, Whipped Cream
+                </span>
+
+                <span class="allergens">
+                    A · C · G
+                </span>
+
+            </div>
+
+        </article>
+
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <div class="footer-line"></div>
+
+        <div class="phone">
+            26 88 73 40
+        </div>
+
+        <div class="allergen-title">
+            Allergen Information
+        </div>
+
+        <div class="allergens-list">
+
+            A — Cereals &nbsp;·&nbsp;
+            B — Crustaceans &nbsp;·&nbsp;
+            C — Eggs &nbsp;·&nbsp;
+            D — Fish &nbsp;·&nbsp;
+            E — Peanuts &nbsp;·&nbsp;
+            F — Soy &nbsp;·&nbsp;
+            G — Lactose &nbsp;·&nbsp;
+            H — Tree Nuts &nbsp;·&nbsp;
+            I — Celery &nbsp;·&nbsp;
+            J — Mustard &nbsp;·&nbsp;
+            K — Sesame &nbsp;·&nbsp;
+            L — Sulphites &nbsp;·&nbsp;
+            M — Lupins &nbsp;·&nbsp;
+            N — Molluscs
+
+        </div>
+
+        <div class="bottom">
+            — ✦ —
+        </div>
+
+    </footer>
+
