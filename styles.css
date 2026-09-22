@@ -1457,20 +1457,20 @@ h3 {
 }
 
 .location {
-  padding-block: clamp(130px, 15vw, 240px);
+  padding-block: clamp(32.5px, 3.75vw, 60px);
 }
 .location-top {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding-bottom: clamp(60px, 9vw, 140px);
+  padding-bottom: clamp(15px, 2.25vw, 35px);
 }
 .location-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: min(6vw, 90px);
   align-items: start;
-  padding-top: clamp(40px, 6vw, 80px);
+  padding-top: clamp(10px, 1.5vw, 20px);
   border-top: 1px solid var(--line);
 }
 .location-grid h2 {
