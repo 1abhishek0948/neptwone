@@ -41,6 +41,10 @@
       navPhotos: "Photos",
       navReserve: "Réserver",
       navReservation: "Réservation",
+      navLocation: "Accès & Contact",
+      skipLink: "Aller au contenu",
+      menuOpen: "Ouvrir le menu",
+      menuClose: "Fermer le menu",
       reserveTable: "Réserver une table",
       themeDark: "Thème sombre",
       heroLineOne: "L'élégance à table.",
@@ -133,6 +137,10 @@
       navPhotos: "Photos",
       navReserve: "Reserve",
       navReservation: "Reservation",
+      navLocation: "Location & Contact",
+      skipLink: "Skip to content",
+      menuOpen: "Open menu",
+      menuClose: "Close menu",
       reserveTable: "Book a table",
       themeDark: "Dark theme",
       heroLineOne: "Elegance at the table.",
@@ -184,7 +192,7 @@
       view: "View",
       photosIndex: "05 — Gallery",
       galleryHeading: "Moments",
-      reservationIndex: "06 — Reservations",
+      reservationIndex: " Reservations",
       reservationHeadingOne: "Your table",
       reservationHeadingTwo: "awaits.",
       reservationBody: "Reservations are confirmed by the team. Please send your request at least 24 hours in advance.",
@@ -232,7 +240,11 @@
       if (phrase) element.textContent = phrase;
     });
     selectors("[data-i18n-aria]").forEach((element) => {
-      const phrase = copy[language][element.dataset.i18nAria];
+      let key = element.dataset.i18nAria;
+      if (key === "menuToggle") {
+        key = element.classList.contains("is-active") ? "menuClose" : "menuOpen";
+      }
+      const phrase = copy[language][key];
       if (phrase) element.setAttribute("aria-label", phrase);
     });
     languageButtons.forEach((button) => {
@@ -311,10 +323,12 @@
   const closeMenu = () => {
     menuToggle?.classList.remove("is-active");
     menuToggle?.setAttribute("aria-expanded", "false");
+    menuToggle?.setAttribute("aria-label", copy[document.documentElement.lang || "fr"].menuOpen);
     mobileMenu?.classList.remove("is-open");
     mobileMenu?.setAttribute("aria-hidden", "true");
     mobileMenu?.setAttribute("inert", "");
     document.body.classList.remove("menu-open");
+    menuToggle?.focus();
   };
 
   menuToggle?.addEventListener("click", () => {
@@ -325,13 +339,46 @@
     }
     menuToggle.classList.add("is-active");
     menuToggle.setAttribute("aria-expanded", "true");
+    menuToggle.setAttribute("aria-label", copy[document.documentElement.lang || "fr"].menuClose);
     mobileMenu?.classList.add("is-open");
     mobileMenu?.setAttribute("aria-hidden", "false");
     mobileMenu?.removeAttribute("inert");
     document.body.classList.add("menu-open");
+    
+    const firstLink = mobileMenu?.querySelector("a");
+    if (firstLink) firstLink.focus();
   });
   selectors(".mobile-menu a").forEach((link) => link.addEventListener("click", closeMenu));
   document.addEventListener("keydown", (event) => { if (event.key === "Escape") closeMenu(); });
+
+  /* ── About Panel ── */
+  const aboutPanel = selector("[data-about-panel]");
+  const aboutToggles = selectors("[data-about-toggle]");
+  const aboutClosers = selectors("[data-about-close]");
+
+  const openAbout = () => {
+    aboutPanel?.classList.add("is-open");
+    aboutPanel?.setAttribute("aria-hidden", "false");
+    document.body.classList.add("menu-open");
+    aboutPanel?.querySelector(".about-panel-close")?.focus();
+  };
+  const closeAbout = () => {
+    aboutPanel?.classList.remove("is-open");
+    aboutPanel?.setAttribute("aria-hidden", "true");
+    if (!mobileMenu?.classList.contains("is-open")) {
+      document.body.classList.remove("menu-open");
+    }
+  };
+
+  aboutToggles.forEach((button) => button.addEventListener("click", () => {
+    if (mobileMenu?.classList.contains("is-open")) closeMenu();
+    openAbout();
+  }));
+  aboutClosers.forEach((el) => el.addEventListener("click", closeAbout));
+  aboutPanel?.querySelector(".about-panel-cta")?.addEventListener("click", closeAbout);
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && aboutPanel?.classList.contains("is-open")) closeAbout();
+  });
 
   const reveal = selectors("[data-reveal], [data-reveal-image]");
   if (reducedMotion || !("IntersectionObserver" in window)) {

@@ -49,7 +49,7 @@
     <script defer src="script.js"></script>
   </head>
   <body>
-    <a class="skip-link" href="#content">Aller au contenu</a>
+    <a class="skip-link" href="#content" data-i18n="skipLink">Aller au contenu</a>
     <div class="page-loader" aria-hidden="true">
       <span class="loader-name">NEPTWONE</span>
       <span class="loader-rule"></span>
@@ -60,35 +60,33 @@
         <img class="wordmark-logo" src="neptune-logo.png" alt="Neptwone" width="838" height="298" />
       </a>
       <nav class="desktop-nav" aria-label="Navigation principale" data-i18n-aria="desktopNavLabel">
-        <a href="#carte" data-i18n="navRestaurant">Restaurant</a>
         <a href="#carte" data-i18n="navMenu">La carte</a>
-        <a href="#actualites" data-i18n="navNews">Actualités</a>
-        <a href="#galerie" data-i18n="navPhotos">Photos</a>
+        <button class="nav-about-trigger" type="button" data-about-toggle data-i18n="navAbout">À propos</button>
+        <a href="#location" data-i18n="navLocation">Accès & Contact</a>
       </nav>
       <div class="header-actions">
         <button class="utility-button language-button" type="button" data-language-toggle aria-label="Switch to English"><span aria-hidden="true">FR</span><span class="utility-rule" aria-hidden="true"></span><span aria-hidden="true">EN</span></button>
         <button class="utility-button theme-button" type="button" data-theme-toggle aria-label="Passer au thème clair"><span class="theme-symbol theme-symbol--dark" aria-hidden="true">◐</span><span class="theme-symbol theme-symbol--light" aria-hidden="true">◒</span><span class="sr-only" data-i18n="themeDark">Thème sombre</span></button>
         <a class="reserve-header" href="#reservation"><span data-i18n="navReserve">Réserver</span> <span aria-hidden="true">↗</span></a>
       </div>
-      <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
-        <span></span><span></span>
-      </button>
+      <div class="mobile-header-actions">
+        <button class="utility-button language-button" type="button" data-language-toggle aria-label="Switch to English"><span aria-hidden="true">FR</span><span class="utility-rule" aria-hidden="true"></span><span aria-hidden="true">EN</span></button>
+        <button class="utility-button theme-button" type="button" data-theme-toggle aria-label="Passer au thème clair"><span class="theme-symbol theme-symbol--dark" aria-hidden="true">◐</span><span class="theme-symbol theme-symbol--light" aria-hidden="true">◒</span></button>
+        <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle data-i18n-aria="menuToggle">
+          <span></span><span></span>
+        </button>
+      </div>
     </header>
 
     <aside id="mobile-menu" class="mobile-menu" aria-hidden="true" inert data-mobile-menu>
-      <div class="mobile-menu-top"><span>NEPTWONE</span><span>01 / 01</span></div>
       <nav aria-label="Navigation mobile" data-i18n-aria="mobileNavLabel">
-        <a href="#carte" data-i18n="navRestaurantMobile">Le restaurant</a>
         <a href="#carte" data-i18n="navMenu">La carte</a>
-        <a href="#actualites" data-i18n="navNews">Actualités</a>
-        <a href="#galerie" data-i18n="navPhotos">Photos</a>
+        <button class="mobile-about-trigger" type="button" data-about-toggle data-i18n="navAbout">À propos</button>
+        <a href="#reservation" data-i18n="navReservation">Réservation</a>
+        <a href="#location" data-i18n="navLocation">Accès & Contact</a>
         <a class="mobile-reserve" href="#reservation"><span data-i18n="reserveTable">Réserver une table</span> <span>↗</span></a>
       </nav>
       <div class="mobile-menu-bottom"><a href="tel:+35226887340">+352 26 88 73 40</a><a href="mailto:info@neptwone.com">info@neptwone.com</a></div>
-      <div class="mobile-utilities" aria-label="Préférences">
-        <button class="utility-button language-button" type="button" data-language-toggle aria-label="Switch to English"><span aria-hidden="true">FR</span><span class="utility-rule" aria-hidden="true"></span><span aria-hidden="true">EN</span></button>
-        <button class="utility-button theme-button" type="button" data-theme-toggle aria-label="Passer au thème clair"><span class="theme-symbol theme-symbol--dark" aria-hidden="true">◐</span><span class="theme-symbol theme-symbol--light" aria-hidden="true">◒</span><span class="sr-only" data-i18n="themeDark">Thème sombre</span></button>
-      </div>
     </aside>
 
     <main id="content" tabindex="-1">
@@ -288,19 +286,15 @@
               </div>
             </div>
             <aside class="menu-preview" aria-hidden="true"><img id="menu-preview-image" data-asset="menuDish" alt="" src="https://impro.usercontent.one/appid/oneComWsb/domain/neptwone.com/media/neptwone.com/onewebmedia/IMG_8074.jpg?etag=%2231bd5-54b58459%22&amp;sourceContentType=image%2Fjpeg&amp;ignoreAspectRatio&amp;resize=900%2B600&amp;quality=88" /></aside>
-          </div>
-          <!-- <div class="menu-library"> -->
-            <span>Carte complète</span>
-            <a href="https://neptwone.com/onewebmedia/2-menu%20enfant2026.pdf" target="_blank" rel="noopener">Menu enfant</a>
-            <a href="https://neptwone.com/onewebmedia/4-salades2026.pdf" target="_blank" rel="noopener">Salades</a>
-            <a href="https://neptwone.com/onewebmedia/vinsetboissons2026-2.pdf" target="_blank" rel="noopener">Vins &amp; boissons</a>
-          </div>
+</div>
+        </div>
         </div>
       </section>
 
 
 
       <section id="reservation" class="reservation section" aria-labelledby="reservation-title">
+        <p class="section-index reservation-section-index" data-i18n="reservationIndex">Reservations</p>
         <div class="reservation-image image-reveal" data-reveal-image>
           <img data-asset="reservation" alt="Table dressée au restaurant Neptwone" loading="lazy" decoding="async" src="https://impro.usercontent.one/appid/oneComWsb/domain/neptwone.com/media/neptwone.com/onewebmedia/IMG_5453.jpg?etag=W%2F%2221279-57fc01ff%22&amp;sourceContentType=image%2Fjpeg&amp;ignoreAspectRatio&amp;resize=1800%2B1200&amp;quality=90" />
         </div>
@@ -325,7 +319,7 @@
         </div>
       </section>
 
-      <section class="location section shell" aria-labelledby="location-title">
+      <section id="location" class="location section shell" aria-labelledby="location-title">
         <div class="location-top" data-reveal><p class="section-index" data-i18n="locationIndex">07 — Nous trouver</p><p class="overline">Colmar-Berg · Luxembourg</p></div>
         <div class="location-grid">
           <h2 id="location-title" data-reveal><span data-i18n="locationHeadingOne">Le chemin</span><br /><em data-i18n="locationHeadingTwo">de la table.</em></h2>
@@ -337,11 +331,29 @@
       </section>
     </main>
 
+    <div class="about-panel" aria-hidden="true" data-about-panel>
+      <div class="about-panel-backdrop" data-about-close></div>
+      <div class="about-panel-content">
+        <button class="about-panel-close" type="button" data-about-close aria-label="Fermer">
+          <span aria-hidden="true">✕</span>
+        </button>
+        <p class="eyebrow" data-i18n="navAbout">À propos</p>
+        <h2 class="about-panel-title" data-i18n="aboutTitle">Convivialité & Plaisir</h2>
+        <div class="about-panel-body">
+          <p data-i18n="aboutParagraph1">Idéalement situé à proximité de Mersch et d'Ettelbruck, le Neptwone est facilement accessible grâce à la sortie d'autoroute en direction de Colmar-Berg.</p>
+          <p data-i18n="aboutParagraph2">Situé à l'étage du Centre de formation pour conducteurs, notre restaurant peut accueillir jusqu'à <strong>110 convives</strong>. Son intérieur contemporain, rehaussé de délicates touches de vert anis, offre une atmosphère chaleureuse, élégante et conviviale.</p>
+          <p data-i18n="aboutParagraph3">Sous la direction de <strong>Christophe Hueber</strong>, de son épouse <strong>Azra</strong> et de toute leur équipe, le Neptwone vous propose une cuisine <strong>luxembourgeoise, française et italienne</strong> de qualité. Les recettes traditionnelles sont revisitées avec créativité et évoluent au rythme des saisons.</p>
+          <p data-i18n="aboutParagraph4">Le Neptwone est également un lieu idéal pour vos <strong>repas de famille, repas d'entreprise, banquets, réceptions et événements privés ou professionnels</strong>.</p>
+        </div>
+        <a class="text-link about-panel-cta" href="#reservation"><span data-i18n="reserveTable">Réserver une table</span> <span>→</span></a>
+      </div>
+    </div>
+
     <footer class="site-footer">
       <div class="shell footer-top"><p class="section-index">Neptwone · Colmar-Berg</p><p class="overline" data-i18n="footerLine">Depuis la cuisine, jusqu'à votre table</p></div>
       <div class="shell footer-brand"><img class="footer-brand-logo" src="neptune-logo.png" alt="Neptwone" width="838" height="298" /></div>
       <div class="shell footer-grid">
-        <nav aria-label="Navigation du pied de page"><a href="#carte" data-i18n="navRestaurant">Restaurant</a><a href="#carte" data-i18n="navMenu">La carte</a><a href="#actualites" data-i18n="navNews">Actualités</a><a href="#galerie" data-i18n="navPhotos">Photos</a><a href="#reservation" data-i18n="navReservation">Réservation</a></nav>
+        <nav aria-label="Navigation du pied de page"><a href="#carte" data-i18n="navMenu">La carte</a><button class="footer-about-trigger" type="button" data-about-toggle data-i18n="navAbout">À propos</button><a href="#reservation" data-i18n="navReservation">Réservation</a><a href="#location" data-i18n="navLocation">Accès & Contact</a></nav>
         <div><a href="tel:+35226887340">+352 26 88 73 40</a><a href="mailto:info@neptwone.com">info@neptwone.com</a><a href="https://www.facebook.com/neptwone" target="_blank" rel="noopener">Facebook ↗</a></div>
         <address>Rue François Krack<br />L-7737 Colmar-Berg<br />Luxembourg</address>
       </div>
